@@ -10,6 +10,7 @@ def homePageView(request):
     <html>
     <h1>Hello, world!</h1>
     <p>
+    This is our first Django web app
     <hr>
     This page was generate at %s.
     </html>
