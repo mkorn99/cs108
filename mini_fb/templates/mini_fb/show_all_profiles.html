@@ -1,0 +1,27 @@
+<!-- templates/profiles.html-->
+
+<title>MiniFacebook</title>
+<h1>MiniFacebook</h1>
+
+<h3>Showing all Profiles</h3>
+
+
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>Image</th>
+
+    </tr>
+
+    {% for profile in all_profiles_list %}
+    <tr>
+        <td>{{profile.first_name}} {{profile.last_name}}</td>
+        <td>{{profile.city}}</td>
+        <td><img src="{{profile.image_url}}" style="max-width: 200;"></td>
+
+    </tr>
+    {% endfor %}
+    
+</table>
