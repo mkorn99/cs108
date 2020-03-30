@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('first_name', models.TextField(blank=True)),
                 ('last_name', models.TextField(blank=True)),
-                ('hometown', models.TextField(blank=True)),
+                ('city', models.TextField(blank=True)),
                 ('email_address', models.TextField(blank=True)),
                 ('image_url', models.URLField(blank=True)),
             ],
