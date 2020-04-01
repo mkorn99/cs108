@@ -2,7 +2,7 @@
 <h1>All quotes by ((person.name))</h1>
 
 <ul>
-    {% for qupte in person.get_all_quotes %}
+    {% for quote in person.get_all_quotes %}
     <li>{{quote.txt}}</li>
     {% endfor %}
 </ul>

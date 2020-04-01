@@ -33,7 +33,7 @@ class Quote(models.Model):
     '''Encapsulate the idea of a quote (i.e., text)'''
 
     text = models.TextField(blank=True)
-    person = models.ForeignKey('Person', on_delete="CASCADE")
+    person = models.ForeignKey('Person', on_delete=models.CASCADE)
     
     def __str__ (self):
         '''Return a string representation of this object'''
@@ -43,7 +43,7 @@ class Image(models.Model):
     '''Represents an image, which is associated with a person'''
 
     image_url = models.URLField(blank=True)
-    person = models.ForeignKey('Person', on_delete="CASCADE")
+    person = models.ForeignKey('Person', on_delete= models.CASCADE)
 
     def __str__ (self):
         '''Return a string representation of this object'''
