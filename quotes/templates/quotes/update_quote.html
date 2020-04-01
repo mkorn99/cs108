@@ -1,0 +1,28 @@
+<!-- templates/update_quote.html-->
+{% extends 'quotes/base.html' %}
+{% block content %}
+
+
+<h2>Update a quote</h2>
+<form method='Post'>
+    {% csrf_token %}
+    <table>
+    {{% for field in form %}}
+    <tr>
+        <th>{{field.name}}</th>
+        <th>{{field}}</th>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td></td>
+        <td>
+            <input type="Update" value="Update">
+        </td>
+    </tr>
+    </table>
+</form>
+
+
+
+
+{% endblock %}
