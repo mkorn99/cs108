@@ -4,13 +4,39 @@
 
 
 
-<a href = "{% url 'show_all_profiles' %}">Home</a>
+
+
+<p> 
+    <a href = "{% url 'update_profile' profile.pk %} " >Update Profile</a>
+    
+</p>
 
 <h3>{{profile.first_name}} {{profile.last_name}}</h3>
 
     <h3><img src="{{profile.image_url}}" style="max-width: 200;"></h3>
     <h3>{{profile.city}}</h3>
     <h3>{{profile.email_address}}</h3>
+
+<h2>Create a Status Message<h2>
+    <form method='Post' action='/mini_fb/profile/{{profile.pk}}/post_status'>
+        {% csrf_token %}
+        <table>
+        {% for field in create_status_form %}
+        <tr>
+            <td>{{field.name}} </td>
+            <td>{{field}}<td>
+            
+        </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Post" name="Post">
+            </td>
+        </tr>
+        </table>
+    </form>
+
 
 <h2>Status</h2>
     <table>
