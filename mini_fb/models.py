@@ -26,6 +26,13 @@ class Profile(models.Model):
         '''Return a URL to display this quote object'''
         return reverse ("'show_profile_page', 'update_profile'", kwargs={"pk":self.pk})
 
+    def get_all_images(self):
+        '''Return sa queryset of all images for this person.'''
+
+        images = Image.objects.filter(profile=self.pk)
+        return images
+
+
     
 
 
@@ -35,9 +42,30 @@ class StatusMessage(models.Model):
     timestamp = models.TimeField(auto_now_add=True)
     message = models.TextField(blank=True)
     profile = models.ForeignKey('Profile', on_delete=models.CASCADE)
+    image = models.ImageField(blank=True)
 
     def __str__ (self):
         '''Return a string representation of this object'''
         return '"%s" - %s' % (self.timestamp, self.message)
+
+
+class Image(models.Model):
+    '''Represents an image, which is associated with a person'''
+
+    
+    image_file = models.ImageField(blank=True)
+    profile = models.ForeignKey('Profile', on_delete= models.CASCADE)
+    image_url = models.URLField(blank=True)
+
+    def __str__ (self):
+        '''Return a string representation of this object'''
+        if self.image_url:
+
+            return self.image_url
+
+        else:
+            return self.image_file.url
+ 
+
 
     
