@@ -106,8 +106,23 @@ class DeleteStatusMessageView(DeleteView):
 
         return StatusMessage.objects.get(pk=status_pk)
         
+class ShowNewsFeedView(DetailView):
+    '''Shows a profiles news feed'''
 
+    model = Profile
+    template_name = "mini_fb/show_news_feed.html"
+    context_object_name = "profile"
 
+class ShowPossibleFriendsView(DetailView):
+    '''Shows possible friends'''
+    model = Profile 
+    template_name = "mini_fb/show_possible_friends.html"
 
-    
-    
+def add_friend(request, profile_pk, friend_pk):
+    '''Process to add a friend for a given profile'''
+    profile = Profile.objects.get(pk = profile_pk)
+    friend = Profile.objects.get(pk = friend_pk)
+    profile.friends.add(friend)
+    friend.save()
+    friends = redirect(reverse('show_profile_page', kwargs={'pk':profile_pk}))
+    return friends

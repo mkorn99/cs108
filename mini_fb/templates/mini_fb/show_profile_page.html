@@ -10,6 +10,15 @@
     <a href = "{% url 'update_profile' profile.pk %} " >Update Profile</a>
     
 </p>
+<p>
+    <a href = "{% url 'news_feed' profile.pk %} " >Show News Feed</a>
+    
+</p>
+
+<p>
+    <a href = "{% url 'show_possible_friends' profile.pk %} " >Show Possible Friends</a>
+    
+</p>
 
 <h3>{{profile.first_name}} {{profile.last_name}}</h3>
 
@@ -60,6 +69,24 @@
             <td><a href = "{% url 'delete_status' profile_pk=profile.pk status_pk=p.pk %}">Delete</a></td>
         </tr>
         {% endfor %}
+    </table>
+
+    <table>
+        <tr><th>Friends</th></tr>
+        {% if profile.get_friends %}
+        {% for friend in profile.get_friends %}
+        <tr>
+            <td><a href="{% url 'show_profile_page' friend.pk %}">{{friend.first_name}}</a></td>
+                
+            <td><a href="{% url 'show_profile_page' friend.pk %}">{{friend.last_name}}</a></td>
+            
+            <td><img src='{{friend.image_url}}' style ="max-width: 200;"></td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        {{profile.first_name}} doesn't have any friends.</td>
+        {% endif %} 
+    
     </table>
 
 {% endblock %}

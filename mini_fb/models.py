@@ -11,6 +11,7 @@ class Profile(models.Model):
     city = models.TextField(blank=True)
     email_address = models.TextField(blank=True)
     image_url = models.URLField(blank=True)
+    friends = models.ManyToManyField("self")
 
     def __str__ (self):
         '''Return a string representation of this object'''
@@ -32,7 +33,24 @@ class Profile(models.Model):
         images = Image.objects.filter(profile=self.pk)
         return images
 
+    def get_friends(self):
+        '''Returns a friends list for this person.'''
 
+        friends = Profile.objects.filter(friends=self.pk)
+        return friends
+
+    def get_news_feed(self):
+        '''Creates a news feed by profile'''
+
+        friends = self.get_friends()
+        news = StatusMessage.objects.filter(profile__in= self.get_friends())
+        return news
+
+    def get_friend_suggestions(self):
+        '''Obtain and return set of possible friends'''
+
+        possible_friends = Profile.objects.exclude(pk__in=self.get_friends()).exclude(id=self.pk)
+        return possible_friends
     
 
 
