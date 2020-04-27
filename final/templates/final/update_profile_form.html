@@ -1,0 +1,29 @@
+<!-- templates/update_profile_form.html-->
+{% extends 'final/base.html' %}
+{% block content %}
+
+
+<h2>Update a Profile<h2>
+<form method='Post'>
+    {% csrf_token %}
+    <table>
+    {% for field in form %}
+    <tr>
+        <td>{{field.name}} </td>
+        <td>{{field}}<td>
+        
+    </tr>
+    {% endfor %}
+    <tr>
+        <td></td>
+        <td>
+            <input type="submit" value="Update Profile" name="Update Profile">
+        </td>
+    </tr>
+    </table>
+</form>
+
+
+
+
+{% endblock %}

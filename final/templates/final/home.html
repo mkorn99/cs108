@@ -1,0 +1,33 @@
+<!--templates/base.html
+Author:Matthew Korn 
+Description:  Home Page for all users; displays a description and use of the website-->
+{% extends 'final/base.html' %}
+{% block content %} 
+
+<style>
+    h1 {text-align: center;}
+    p {text-align: center;}
+    h2 {text-align: center;}
+    img {text-align: center;}
+    
+</style>
+
+
+<style>
+    h2 {font-family: monospace; font-size: 175%; background-color: rgb(0, 100, 190); color: snow;}
+    table, th, td,p {font-family: lucida sans; font-weight: 700; border: 1px; border-style: solid; border-color:black; border-width: 1px; color:red}
+    p{font-size: 130%; font-family: monospace; border: 1px; border-style: solid; border-color: black; border-width: 1px;}
+    th {font-size: 150%; color:red}
+    img {display:block;}
+</style>
+<h2> Welcome to MyFitnessFriends  </h2>
+<h2>TIME TO COMMENCE FITNESS PROGRESS!</h2>
+<br>
+<p>MyFitnessFriends is a platform for users of all athletic ability and fitness goals.<br>  The goal of this
+    website is to track your workout progress against other members and push yourself to reach peak physical physique.
+    Time to grind!!
+</p>
+<center>
+<img src="https://previews.123rf.com/images/spicytruffel/spicytruffel2001/spicytruffel200100083/138134289-gym-coach-personal-workout-fitness-trainer-cartoon-characters-doing-sport-exercises-and-cardio-and-w.jpg" alt="Workout" class="center" style= max-height:400 style=max-width:400>
+</center>
+{% endblock %}   

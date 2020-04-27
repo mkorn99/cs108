@@ -1,0 +1,31 @@
+<!--templates/profile_page.html-->
+{% extends "final/base.html" %}
+{% block content %}
+
+
+<h2>Create a Workout<h2>
+    <form method='POST' enctype="multipart/form-data" 
+    action='/final/profile/post_workout2'>
+    
+   
+        {% csrf_token %}
+        <table>
+        {% for field in form %}
+            
+        
+        <tr>
+            <td>{{field.name}} </td>
+            <td>{{field}}<td>
+            
+        </tr>
+        {% endfor %}
+        <tr>
+           
+            <td>
+                <input type="submit" value="Post" name="Post">
+            </td>
+        </tr>
+        </table>
+    </form>
+
+    {% endblock %}

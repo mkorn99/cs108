@@ -9,6 +9,8 @@ pylint = "*"
 [packages]
 django = "==2.2.7"
 gunicorn = "*"
+pillow = "*"
+django-columns= "*"
 
 [requires]
 python_version = "3.8"

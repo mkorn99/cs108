@@ -1,0 +1,23 @@
+<!----templates/delete_workout.html-->
+{% extends "final/base.html" %}
+{% block content %}
+
+<h3>Are you sure you want to delete this workout?</h3>
+
+{{work.workout}}
+
+
+<form method='POST'>
+    {% csrf_token %}
+    <input type= 'submit' name='yes' value='yes'>
+
+</form>
+
+<form
+    method='GET' action ="{% url 'show_profile_page' work.profile.pk %}">
+    {% csrf_token %}
+    <input type= 'submit' name="no" value= "no">
+
+</form>
+
+{% endblock %}   

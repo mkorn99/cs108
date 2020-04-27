@@ -1,0 +1,78 @@
+<!--templates/profile_page.html
+Author:Matthew Korn
+Description: Link to Profile Page view; displays a users profile with all of their information, image, and recorded workouts-->
+{% extends "final/base.html" %}
+{% block content %}
+
+
+
+
+<th><p> 
+    <a href = "{% url 'update_profile' profile.pk %} " >Update Profile</a> 
+</p></th>
+
+
+
+<center>
+<h2>{{profile.first_name}} {{profile.last_name}}</h2>
+
+
+    <h3><img src="{{profile.image_url}}" style="width: 300;"></h3>
+    <section class="Personal-info" id="personal info"><h2>About Me</h2></section>
+   
+    <Label><h3>Hometown</h3><p>{{profile.city}}</p></Label>
+    <label><h3>Email</label></h3><p>{{profile.email_address}}</p>
+    <label><h3>Height</label></h3><p>{{profile.height}}</p>
+    <label><h3>Weight</label></h3><p>{{profile.weight}}</p>
+
+<h2>Create a Workout<h2>
+    <form method='POST' enctype="multipart/form-data" 
+    action='/final/profile/{{profile.pk}}/post_workout'>
+    
+   
+        {% csrf_token %}
+        <table>
+        {% for field in create_workout_form %}
+            
+        
+        <tr>
+            <td>{{field.name}} </td>
+            <td>{{field}}<td>
+            
+        </tr>
+        {% endfor %}
+        <tr>
+           
+            <td>
+                <input type="submit" value="Post" name="Post">
+            </td>
+        </tr>
+        </table>
+    </form>
+
+
+<h2>Workouts</h2>
+    <table>
+         <tr>
+            <th>Time</th>
+            <th>Workout</th>
+            <th>Duration</th>
+        </tr>
+        {% for p in profile.get_workout %}
+        <tr>
+            <td>{{p.timestamp}}</td>
+            <td>{{p.workout}}</td>
+            <td>{{p.duration}}</td>
+            <td>{% if p.image%}
+                <img src="{{p.image.url}}" style="max-width: 200;">
+                {% endif %}
+            </td>
+            <td><a href = "{% url 'delete_workout' profile_pk=profile.pk  workout_pk=p.pk %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    
+</center>
+{% endblock %}
+   

@@ -1,0 +1,67 @@
+<!--templates/base.html-->
+<html>
+    <style>
+
+    body {background-color: whitesmoke;}
+        h1 {background-color: rgb(0, 100, 190); color: snow; font-family: monospace; font-size: 300%;}
+        h3 {font-family: sans-serif ;}
+        a {color: black;}
+        table, th, td,p {font-family: monospace; border: 1px; border-style: solid; border-color: black; border-width: 1px;}
+        p{font-size: 130%; font-family: monospace; border: 1px; border-style: solid; border-color: black; border-width: 1px;}
+        th {font-size: 150%;}
+        
+    
+
+    </style>
+    
+
+    <body bgcolor="skyblue" text="black">
+        <h1 style="color: white" >MyFitnessFriends</h1>
+        <table>
+            <tr>
+                <th><p align="center"> 
+                    <a href = "{% url 'home' %}" >HomePage</a>
+                    
+                </p>
+                </th>
+            
+                <th><p>
+                <a href = "{% url 'create_profile' %} " >Create a profile</a>
+                </p></th>
+                <th><p> 
+                <a href = "{% url 'show_all_profiles' %} " >Show all Profiles</a>
+                
+                </p></th>
+                <th><p> 
+                    <a href = "{% url 'create_workout' %} " >Create a Workout</a>
+                    
+                    </p></th>
+
+                    <th><p> 
+                        <a href = "{% url 'random_workout' %} " >Workout of the Day</a>
+                        
+                        </p></th>
+
+                        <th><p> 
+                            <a href = "{% url 'show_workout_feed' %} " >All User Feed</a>
+                            
+                            </p></th>
+
+                
+                
+            
+            </tr>
+            </table>
+        
+        
+        
+        
+        
+        {% block content %}    
+        {% endblock %}     
+        
+                
+            </body>
+       
+    </body>
+</html> 

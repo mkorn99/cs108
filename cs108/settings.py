@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'quotes',
     'mini_fb',
+    'final',
+    'columns',
 ]
 
 MIDDLEWARE = [

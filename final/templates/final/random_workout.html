@@ -1,0 +1,35 @@
+<!--templates/profile_page.html
+Author:Matthew Korn
+Description: Displays a workout at random from the database to give the users a workout of the day!-->
+{% extends "final/base.html" %}
+{% block content %}
+
+<style>
+h2{font-family: monospace;  font-size: 160%;}
+    
+
+</style>
+<h2>Workouts</h2>
+    <table>
+         <tr>
+            <th>Time</th>
+            <th>Workout</th>
+            <th>Duration</th>
+        </tr>
+        
+        <tr>
+            <td>{{random_workout.timestamp}}</td>
+            <td>{{random_workout.workout}}</td>
+            <td>{{random_workout.duration}}</td>
+            <td>{% if random_workout.image%}
+                <img src="{{random_workout.image.url}}" style="max-width: 200;">
+                {% endif %}
+            </td>
+
+          
+    
+
+    
+
+{% endblock %}
+   

@@ -1,0 +1,46 @@
+<!-- templates/update_profile.html
+Author: Matthew Korn
+Decription: Allows the user to create a profile with basic information to begin tracking fitness progress-->
+{% extends 'final/base.html' %}
+{% block content %}
+
+
+
+    <style>
+         
+            h1 {text-align: center;}
+            p {text-align: center;}
+            h2 {text-align: center;}
+        
+        
+        h2 {background-color: rgb(26, 147, 252); font-family: monospace; font-size: 300%;}
+        h3 {font-family: monospace;}
+        a {color: black;}
+        
+       
+
+    </style>
+<h2>Create a Profile!</h2>
+<form method='Post'>
+    {% csrf_token %}
+    <table>
+    {% for field in form %}
+    <tr>
+        <td>{{field.name}} </td>
+        <td>{{field}}<td>
+        
+    </tr>
+    {% endfor %}
+    <tr>
+        <td></td>
+        <td>
+            <input type="submit" value="Create New Profile" name="Create New Profile">
+        </td>
+    </tr>
+    </table>
+</form>
+
+
+
+
+{% endblock %}
