@@ -1,13 +1,17 @@
-<!----templates/delete_workout.html-->
+<!----final/templates/delete_workout.html
+author:MAtthew Korn
+Description: Function and link to delete workout in the profile page; gives the user a warning of the action they are taking-->
 {% extends "final/base.html" %}
 {% block content %}
 
 <h3>Are you sure you want to delete this workout?</h3>
 
-{{work.workout}}
+
+<style>h4{font-style: monospace; font-size:medium;}</style>
+<h4>{{work.workout}}</h4> <!--Displays the workout you are trying to delete-->
 
 
-<form method='POST'>
+<form method='POST'> 
     {% csrf_token %}
     <input type= 'submit' name='yes' value='yes'>
 
