@@ -1,56 +1,38 @@
 <!-- templates/profiles.html
 Author:Matthew Korn 
 Description: Displays all of the users in the database, showing their image and link to their profile-->
+
 {% extends "final/base.html" %}
 {% block content %}
 
 <title>MyFitnessFriend</title>
-
+<style>
+    h3{font-family: monospace;  font-size: 160%;}
+    
+    
+    </style>
 
 
 <h3>Showing all Users</h3>
 
-
-
 <center>
-<table>
-    <tr>
-        <th>Profile Picture</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-    </tr>
-    <div class="row">
-        <div class="column"></div>
-        <div class="column"></div>
-        <div class="column"></div>
-      </div>
-      
-      
-      
-    {% for profile in all_profiles_list %}
-    <center>
-    <tr>
+{% load columns %}
 
-        {% load columns %}
-
-
-
-        
-        
-        
-       
-      
-        <div style="width: 300px">
-        <td> <img src='{{profile.image_url}}' style ="object-fit: cover; height:  250px; width: 200px;"></td>
-        <td><a href="{% url 'show_profile_page' profile.pk %}">{{profile.first_name}}</a></td>
-            
-        <td><a href="{% url 'show_profile_page' profile.pk %}">{{profile.last_name}}</a></td>
-    </div>
-    </tr>
-    </center>
-    {% endfor %}
-
+<table class="row">
     
+    {% for col in all_profiles_list|columns:3 %} <!--Loop to display a grid of 3 columns wide -->
+        <tr class="col-md-4">
+            
+            {% for profile in col %} <!--Loop to display the First Name, last name and image of every profile in the database-->
+                
+                <td class="item"><a href="{% url 'show_profile_page' profile.pk %}">{{ profile.first_name }}</td>
+                <td class="item"><a href="{% url 'show_profile_page' profile.pk %}">{{ profile.last_name }}</td>
+                <td class="item"><img src='{{profile.image_url}}'style ="object-fit: cover; height:  250px; width: 200px;"></td>
+
+            {% endfor %}
+        </tr>
+    {% endfor %}
 </table>
+    
 </center>
 {% endblock %}

@@ -1,6 +1,7 @@
 <!-- templates/update_profile.html
 Author: Matthew Korn
-Decription: Allows the user to create a profile with basic information to begin tracking fitness progress-->
+Decription: Allows the user to create a profile with basic information to begin tracking fitness progress(Name, Email, City, Email
+Height, Weight, Image)-->
 {% extends 'final/base.html' %}
 {% block content %}
 
@@ -13,7 +14,7 @@ Decription: Allows the user to create a profile with basic information to begin 
             h2 {text-align: center;}
         
         
-        h2 {background-color: rgb(26, 147, 252); font-family: monospace; font-size: 300%;}
+        h2 {background-color: blue; font-family: monospace; font-size: 300%;}
         h3 {font-family: monospace;}
         a {color: black;}
         
@@ -24,10 +25,10 @@ Decription: Allows the user to create a profile with basic information to begin 
 <form method='Post'>
     {% csrf_token %}
     <table>
-    {% for field in form %}
+    {% for field in form %} <!--Loop for fields in create profile form (First Name, Last Name City, Email, Height, Weight, Image) -->
     <tr>
-        <td>{{field.name}} </td>
-        <td>{{field}}<td>
+        <td>{{field.name}} </td> <!--Displays field names -->
+        <td>{{field}}<td> <!--Displays text box for entries-->
         
     </tr>
     {% endfor %}

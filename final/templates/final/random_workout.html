@@ -18,18 +18,14 @@ h2{font-family: monospace;  font-size: 160%;}
         </tr>
         
         <tr>
-            <td>{{random_workout.timestamp}}</td>
+            <td>{{random_workout.timestamp}}</td>  <!--Retrieves a random workout from the user database-->
             <td>{{random_workout.workout}}</td>
             <td>{{random_workout.duration}}</td>
-            <td>{% if random_workout.image%}
+            <td>{% if random_workout.image%} <!--displays an image if there is one attached to the workout-->
                 <img src="{{random_workout.image.url}}" style="max-width: 200;">
                 {% endif %}
             </td>
 
           
-    
-
-    
-
 {% endblock %}
    

@@ -1,3 +1,7 @@
+#file name: final/views.py
+#author:Matthew Korn 
+#description:'''Includes the views of the webserver such as Show all profiles, Profile Page, Create profile, Update Profile,
+# Create Workout, Delete Workout, Homepage, Random Workout(Work out of the day), Show Workout Feed (All User feed)'''
 
 # Create your views here.
 from django.shortcuts import render
@@ -32,7 +36,7 @@ class ShowProfilePageView(DetailView):
     # obtain the default context data (a dictionary) from the superclass; 
     # this will include the Profile record for this page view
         context = super(ShowProfilePageView, self).get_context_data(**kwargs)
-    # create a new CreateStatusMessageForm, and add it into the context dictionary
+    # create a new CreatWorkoutForm, and add it into the context dictionary
         form = CreateWorkoutForm()
         context['create_workout_form'] = form
     # return this context dictionary
@@ -57,8 +61,7 @@ def create_workout(request, pk):
             sm = form.save(commit=False)
             sm.profile = profile
             sm.workout = workout
-            #sm.image = image
-            #sm.duration = duration
+            
             sm.save()
 
     # redirect the user to the show_profile_page view
@@ -93,18 +96,23 @@ class DeleteWorkoutView(DeleteView):
         return reverse('show_profile_page', kwargs={'pk':profile_pk})
 
     def get_context_data(self, **kwargs):
-        '''Retuns a dictionary with context data for this template to use.'''
+        '''Returns a dictionary with context data for this template to use.'''
 
+        #creates ability to delete workout on profile page
         context = super(DeleteWorkoutView, self).get_context_data(**kwargs)
 
+        #gets workout object to delete
         work = Workout.objects.get(pk=self.kwargs['workout_pk'])
 
+        #create dictionary
         context['work'] = work
+        #return dictionary
         return context
 
     def get_object(self):
         '''Returns the workout associated with the profile'''
         
+        #uses profile and workout primary key to return workout that is attached to a profile
         profile_pk = self.kwargs['profile_pk']
         workout_pk = self.kwargs['workout_pk']
 

@@ -1,4 +1,8 @@
-<!-- templates/update_profile_form.html-->
+<!-- final/templates/update_profile_form.html
+Author:Matthew Korn
+Description: Link to form to update the users profile.  This is where you can track your progress by updating height and weight as well as other 
+personal information (City, Image and Email) -->
+
 {% extends 'final/base.html' %}
 {% block content %}
 
@@ -7,10 +11,10 @@
 <form method='Post'>
     {% csrf_token %}
     <table>
-    {% for field in form %}
+    {% for field in form %} <!--Loop to retrieve the possible fields to edit in the update profile form (Height, Weight, City, Image, Email)-->
     <tr>
-        <td>{{field.name}} </td>
-        <td>{{field}}<td>
+        <td>{{field.name}} </td> <!--Displays the field names of Height, Weight, Image and Email-->
+        <td>{{field}}<td> <!--Displays the submission field for Height, Weight, Image and Email-->
         
     </tr>
     {% endfor %}

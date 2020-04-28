@@ -1,6 +1,6 @@
 <!----final/show_news_feed.html
 Author:Matthew Korn 
-Description: Link to Workout Feed; takes all workouts in the database and returns them on one page in a "newsfeed view"-->
+Description: Link to Workout Feed; takes all workouts in the database and returns them on one page in a "list view"-->
 
 {% extends 'final/base.html' %}
 {% block content %}
@@ -19,7 +19,8 @@ Description: Link to Workout Feed; takes all workouts in the database and return
 <h3>Showing all User Workouts</h3>
 
 <table>
-    {% for workout in all_workouts %}
+    {% for workout in all_workouts %} <!--Loop to retrieve all users workouts and display all workouts in a list feed view
+    Displays (Timestamp, Name, Profile Image, Workout Type and Duration)-->
     <tr>
         <th>Time</th>
         <th>Name</th>
@@ -34,7 +35,7 @@ Description: Link to Workout Feed; takes all workouts in the database and return
         <td>{{workout.timestamp}}</td>
         <td><a href="{% url 'show_profile_page' workout.profile.pk %}">{{workout.profile.first_name}} {{workout.profile.last_name}}</a></td>
         <td> <img src='{{workout.profile.image_url}}' style='max-width: 200;' style='max-height:200;'></td>
-        {% if wrk.image %}
+        {% if wrk.image %}<!---If statement for possible image submission with the workout form-->
         <td><img src="{{workout.profile.image_url}}" style='max-width: 200;' style='max-height:200;'></td>
         {% endif %}
         <td>{{workout.workout}}</td>

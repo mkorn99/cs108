@@ -3,9 +3,9 @@ Author:Matthew Korn
 Description: Link to Profile Page view; displays a users profile with all of their information, image, and recorded workouts-->
 {% extends "final/base.html" %}
 {% block content %}
-
-
-
+<style>
+p {font-family: monospace; border: 1px; border-style: solid; border-color: black; border-width: 1px;}
+</style>
 
 <th><p> 
     <a href = "{% url 'update_profile' profile.pk %} " >Update Profile</a> 
@@ -32,12 +32,13 @@ Description: Link to Profile Page view; displays a users profile with all of the
    
         {% csrf_token %}
         <table>
-        {% for field in create_workout_form %}
+        {% for field in create_workout_form %} <!--Loop to retrieve the field names everytime for workout(Workout Type and Duration and image) and the 
+        textbox field to enter the users responses-->
             
         
         <tr>
-            <td>{{field.name}} </td>
-            <td>{{field}}<td>
+            <td>{{field.name}} </td> <!--Displays the field names of Workout Type, Duration and Image-->
+            <td>{{field}}<td> <!--Displays the submission fields for Workout Type, Duration and Image-->
             
         </tr>
         {% endfor %}
@@ -58,12 +59,13 @@ Description: Link to Profile Page view; displays a users profile with all of the
             <th>Workout</th>
             <th>Duration</th>
         </tr>
-        {% for p in profile.get_workout %}
+        {% for p in profile.get_workout %} <!--Loop to retrieve the time each workout was logged as well as the duration and image
+        and display them on the users profile page-->
         <tr>
             <td>{{p.timestamp}}</td>
             <td>{{p.workout}}</td>
             <td>{{p.duration}}</td>
-            <td>{% if p.image%}
+            <td>{% if p.image%} <!--If statement to display an image if entered to the workout form-->
                 <img src="{{p.image.url}}" style="max-width: 200;">
                 {% endif %}
             </td>

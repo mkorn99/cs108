@@ -1,7 +1,10 @@
+#file:final/admin.py
+#author:Matthew Korn
+#description: '''Register the models in the database'''
+
 from django.contrib import admin
 
-# Register your models here.
-# Register your models here.
+
 
 
 # Register your models here.
